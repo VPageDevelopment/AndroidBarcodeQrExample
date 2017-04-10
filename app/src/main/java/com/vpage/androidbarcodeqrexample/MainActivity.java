@@ -7,12 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+    private static final String TAG = MainActivity.class.getName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,15 @@ public class MainActivity extends Activity {
         }
     }
 
+
+    //product barcode mode
+    public void generateBar(View v) {
+
+            Intent intent = new Intent(getApplicationContext(), BarcodeGenerateActivity.class);
+            startActivity(intent);
+    }
+
+
     //alert dialog for downloadDialog
     private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
         AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
@@ -58,8 +69,8 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 try {
                     act.startActivity(intent);
-                } catch (ActivityNotFoundException anfe) {
-
+                } catch (ActivityNotFoundException e) {
+                    Log.e(TAG,e.getMessage());
                 }
             }
         });

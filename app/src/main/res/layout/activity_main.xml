@@ -41,4 +41,17 @@
         android:text="Bar Code"
         android:textSize="18dp" >
     </Button>
+
+    <Button
+        android:id="@+id/barCodeGenerate"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:onClick="generateBar"
+        android:text="Bar Code Generator"
+        android:textSize="18dp" >
+    </Button>
+
 </LinearLayout>
