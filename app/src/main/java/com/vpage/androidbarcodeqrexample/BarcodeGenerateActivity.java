@@ -5,15 +5,24 @@ import java.util.Map;
 import java.util.Random;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.onbarcode.barcode.android.AndroidColor;
+import com.onbarcode.barcode.android.AndroidFont;
+import com.onbarcode.barcode.android.IBarcode;
+import com.onbarcode.barcode.android.UPCA;
 
 public class BarcodeGenerateActivity extends Activity {
 
@@ -24,9 +33,11 @@ public class BarcodeGenerateActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcodegenerate);
 
-        ImageView imageView = (ImageView)findViewById(R.id.barcodeImage);
+       /* ImageView imageView = (ImageView)findViewById(R.id.barcodeImage);
         TextView textView = (TextView)findViewById(R.id.barcodeDigit);
 
+        imageView.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.VISIBLE);
 
         // barcode data
         Random random = new Random();
@@ -44,8 +55,12 @@ public class BarcodeGenerateActivity extends Activity {
             Log.e(TAG,e.getMessage());
         }
 
-        textView.setText(barcode_data);
+        textView.setText(barcode_data);*/
 
+        LinearLayout linearLayout =(LinearLayout)findViewById(R.id.barcodeView);
+        linearLayout.setVisibility(View.VISIBLE);
+        AndroidBarcodeView view = new AndroidBarcodeView(this);
+        linearLayout.addView(view);
 
     }
 

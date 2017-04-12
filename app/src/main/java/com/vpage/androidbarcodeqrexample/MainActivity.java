@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -53,8 +54,14 @@ public class MainActivity extends Activity {
     //product barcode mode
     public void generateBar(View v) {
 
-            Intent intent = new Intent(getApplicationContext(), BarcodeGenerateActivity.class);
-            startActivity(intent);
+          //  Intent intent = new Intent(getApplicationContext(), BarcodeGenerateActivity.class);
+           // startActivity(intent);
+
+        LinearLayout linearLayout =(LinearLayout)findViewById(R.id.barcodeContentView);
+        linearLayout.setVisibility(View.VISIBLE);
+        LinearLayout barcodeView =(LinearLayout)findViewById(R.id.barcodeView);
+        AndroidBarcodeView view = new AndroidBarcodeView(this);
+        barcodeView.addView(view);
     }
 
 
